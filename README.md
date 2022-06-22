@@ -15,7 +15,11 @@ just read or tweak the path directly.
 $ eval $(pf first Go/bin)
 ```
 
-This will move any folder that matches "Go/bin" to the front of the path.
+This will move any folder that matches "Go/bin" to the front of the path. The `eval` is necessary
+because a tool like `pf` can't modify its parent's environment otherwise; `pf` actually prints out
+a line that looks like `PATH=/your:/new:/path...` to be consumed by `bash`. I usually use `bash`, so
+I'm probably not going to be motivated to support other shells, but pull requests that detect the
+containing shell and modify the output appropriately are welcome.
 
 All path expressions in `pf` use Go regular expressions to filter the paths, so
 this also works:
@@ -34,8 +38,8 @@ them in order of the patterns on the command line.
 $ eval $(pf first Go /bin$)
 ```
 
-The Go/bin binary folder will be moved to the front of the path followed by all (other) path
-components that end in `/bin`.
+The Go/bin binary folder followed by all (other) path components that end in `/bin`
+will be moved to the front of the path.
 
 ### Search the current path
 
@@ -61,7 +65,8 @@ $ eval $(pf delete Go/bin$)
 ```
 
 Delete a matching path component from the path. It's recommended that you first `search` using the same
-pattern before you use delete.
+pattern before you use delete. *All* paths that match the regular expression will be deleted from the
+path.
 
 ### Print the current path, one component per line, Linux host:
 
