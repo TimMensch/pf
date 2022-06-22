@@ -95,6 +95,15 @@ C:\Windows\System32\Wbem
 C:\Windows\System32\WindowsPowerShell\v1.0
 # ...
 ```
+## Build instructions
+
+- Install [Go](https://go.dev/) for your platform.
+- Run `go build`
+- ...Profit!
+
+Go should create a binary `pf` or `pf.exe` (depending on your platform) that you can
+use. I chose Go for this project explicitly because it's so easy to create cross-platform-friendly
+command line tools.
 
 ## Credits
 Written by Tim Mensch, who is not much of a Go programmer, so any suggestions to improve the idiomatic usage
