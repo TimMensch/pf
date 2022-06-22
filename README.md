@@ -45,7 +45,7 @@ will be moved to the front of the path.
 
 ```bash
 $ pf search go local
-/home/tim/.local/bin
+/home/tim-m/.local/bin
 /home/tim-m/GCloud/google-cloud-sdk/bin
 /home/tim-m/go/bin
 /usr/local/sbin
