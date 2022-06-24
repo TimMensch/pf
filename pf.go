@@ -15,11 +15,13 @@ func unixShellFromDos() bool {
 }
 
 func dosToUnix(path string) string {
-	path = fmt.Sprintf("/%s%s", strings.ToLower(string(path[0])), strings.ReplaceAll(path[2:], "\\", "/"))
+	if len(path)>1 {
+		path = fmt.Sprintf("/%s%s", strings.ToLower(string(path[0])), strings.ReplaceAll(path[2:], "\\", "/"))
+	}
 	path = strings.ReplaceAll(path, " ", "\\ ")
 	path = strings.ReplaceAll(path, "(", "\\(")
 	path = strings.ReplaceAll(path, ")", "\\)")
-	return path
+return path
 }
 
 func printPath(paths []string) {
@@ -30,7 +32,6 @@ func printPath(paths []string) {
 		sep = ":"
 
 		for i, path := range paths {
-
 			paths[i] = dosToUnix(path)
 		}
 	}
